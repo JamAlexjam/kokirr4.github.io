@@ -3,163 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>kokirr4 | TikTok & Instagram Beauty</title>
+    <title>kokirr4 | TikTok & Instagram Beauty Queen</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
     <style>
-        :root {--green:#006a4e; --orange:#f4a460; --red:#d40000; --dark:#111; --light:#f8f9fa;}
-        body {font-family:'Arial'; background:var(--light); color:#333; transition:0.5s; margin:0;}
-        .dark-mode {background:var(--dark); color:#fff;}
-        
-        /* Full Hero Slider */
-        .hero-carousel .carousel-item {
-            height: 100vh; background-size: cover; background-position: center; position: relative;
+        :root {--green:#006a4e; --orange:#f4a460; --red:#d40000; --glow:#00ff9d; --dark:#0a0a0a; --light:#f8f9fa;}
+        * {font-family:'Poppins',sans-serif;}
+        body {background:var(--light); color:#333; transition:0.5s; margin:0;}
+        .dark-mode {background:#000; color:#fff;}
+
+        /* HERO - Your 3 Photos (unchanged) */
+        .hero-carousel .carousel-item {height:100vh; background-size:cover; background-position:center top;}
+        .hero-carousel .carousel-item::before {content:''; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1;}
+        .hero-content {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; color:white; z-index:2;}
+        .hero-content h1 {font-size:5rem; font-weight:900; text-shadow:0 5px 20px rgba(0,0,0,0.7);}
+        .social-icons a {color:white; font-size:2.5rem; margin:0 20px; transition:0.4s;}
+        .social-icons a:hover {transform:scale(1.4) rotate(10deg);}
+
+        /* STATS - NEON GLOW CARDS */
+        .stats-section {padding:80px 0; background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);}
+        .stat-card {
+            background:rgba(255,255,255,0.15); backdrop-filter:blur(15px); border-radius:25px; padding:40px 20px;
+            text-align:center; box-shadow:0 15px 35px rgba(0,0,0,0.3); transition:0.5s; border:1px solid rgba(255,255,255,0.2);
         }
-        .hero-carousel .carousel-item::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.45); z-index: 1;
+        .stat-card:hover {transform:translateY(-20px); box-shadow:0 25px 50px rgba(0,255,200,0.4);}
+        .stat-num {font-size:4.5rem; font-weight:900; background:linear-gradient(90deg,#ff6b6b,#4ecdc4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+        .stat-label {font-size:1.3rem; font-weight:600; color:white; margin-top:10px;}
+
+        /* MEDIA GRID - FULL WIDTH & STYLISH */
+        .media-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(350px,1fr)); gap:25px; padding:60px 20px;}
+        .media-card {
+            position:relative; height:550px; border-radius:25px; overflow:hidden; box-shadow:0 15px 40px rgba(0,0,0,0.3);
+            transition:all 0.5s; background:#000;
         }
-        .hero-content {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 2; width: 100%;
+        .media-card:hover {transform:scale(1.03); box-shadow:0 25px 60px rgba(0,255,157,0.4);}
+        .live-badge {
+            position:absolute; top:15px; left:15px; background:#ff006e; color:white; padding:8px 18px; border-radius:50px; font-weight:800; z-index:10;
+            animation:pulse 2s infinite;
         }
-        .hero-content h1 {font-size: 4.8rem; font-weight: 900; text-shadow: 0 4px 15px rgba(0,0,0,0.6);}
-        .social-icons a {color:white; font-size:2.3rem; margin:0 20px; transition:0.3s;}
-        .social-icons a:hover {transform:scale(1.3);}
-        
-        .stat {font-size:3.5rem; font-weight:bold; color:var(--green);}
-        .stat-num {display:inline-block;}
-        .tiktok-embed, .instagram-embed {max-width:325px; margin:20px auto; transition:transform 0.3s; border-radius:15px; overflow:hidden;}
-        .tiktok-embed:hover, .instagram-embed:hover {transform:scale(1.08);}
-        .contact-form {background:white; padding:40px; border-radius:15px; box-shadow:0 10px 30px rgba(0,0,0,0.1);}
-        footer {background:var(--dark); color:white; padding:30px 0; text-align:center;}
-        .dark-toggle, .lang-toggle, .scroll-top {position:fixed; z-index:1000; background:white; padding:12px; border-radius:50%; box-shadow:0 0 15px rgba(0,0,0,0.2); cursor:pointer;}
+        @keyframes pulse {0%,100%{box-shadow:0 0 0 0 rgba(255,0,110,0.7)} 50%{box-shadow:0 0 0 10px rgba(255,0,110,0)}}
+        .platform-icon {
+            position:absolute; bottom:20px; right:20px; font-size:3.5rem; color:rgba(255,255,255,0.8); z-index:10;
+        }
+
+        /* CONTACT - FLOATING GLASS FORM */
+        .contact-section {padding:100px 20px; background:linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);}
+        .contact-card {
+            max-width:600px; margin:0 auto; background:rgba(255,255,255,0.2); backdrop-filter:blur(20px); border-radius:30px;
+            padding:50px; box-shadow:0 20px 60px rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.3);
+        }
+        .contact-card input, .contact-card textarea {
+            background:rgba(255,255,255,0.1); border:none; border-radius:15px; color:white; padding:15px;
+        }
+        .contact-card input::placeholder, .contact-card textarea::placeholder {color:rgba(255,255,255,0.7);}
+        .contact-card button {
+            background:linear-gradient(90deg,#ff6b6b,#4ecdc4); border:none; padding:15px; border-radius:50px; font-weight:800; color:white;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position:fixed; bottom:25px; left:25px; background:#25D366; color:white; width:65px; height:65px; border-radius:50%;
+            display:flex; align-items:center; justify-content:center; font-size:2rem; box-shadow:0 10px 30px rgba(37,211,102,0.5); z-index:1000;
+            animation:float 3s infinite;
+        }
+        @keyframes float {0%,100%{transform:translateY(0)} 50%{transform:translateY(-15px)}}
+
+        /* Toggles */
+        .dark-toggle, .lang-toggle, .scroll-top {position:fixed; z-index:1000; background:white; padding:12px; border-radius:50%; box-shadow:0 0 20px rgba(0,0,0,0.2); cursor:pointer;}
         .dark-toggle {top:20px; right:70px;}
         .lang-toggle {top:20px; right:20px;}
-        .scroll-top {bottom:20px; right:20px; background:var(--green); color:white; display:none; align-items:center; justify-content:center;}
-        .phone-btn {background:#25D366; color:white; padding:12px 25px; border-radius:50px; text-decoration:none; display:inline-block; font-weight:bold;}
+        .scroll-top {bottom:100px; right:20px; background:var(--green); color:white; display:none;}
+
         .amharic {display:none;}
         .lang-en .amharic, .lang-am .english {display:none !important;}
     </style>
 </head>
 <body class="lang-en">
 
-    <!-- Toggles -->
+    <!-- Floating Buttons -->
+    <a href="https://wa.me/251965809644" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
     <div class="dark-toggle" onclick="toggleDark()"><i class="fas fa-moon"></i></div>
     <div class="lang-toggle" onclick="toggleLang()"><span class="english">EN</span><span class="amharic">አማ</span></div>
     <div class="scroll-top" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></div>
 
-    <!-- HERO SLIDER — ALL 3 OF YOUR REAL PHOTOS -->
-    <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="4000">
+    <!-- HERO SLIDER - Your 3 Photos -->
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
         <div class="carousel-inner">
-            <!-- PHOTO 1 -->
-            <div class="carousel-item active" style="background-image: url('https://raw.githubusercontent.com/JamAlexjam/kokirr4.github.io/f7c000fa6dd4666fa6bd88fc46592e2e9c1963df/photo1.jpg');">
+            <div class="carousel-item active" style="background-image:url('https://raw.githubusercontent.com/JamAlexjam/kokirr4.github.io/f7c000fa6dd4666fa6bd88fc46592e2e9c1963df/photo1.jpg')">
                 <div class="hero-content">
-                    <h1 class="english">kokirr4</h1>
-                    <h1 class="amharic">ኮኪርር4</h1>
-                    <p class="lead english">71.4K TikTok | 10K+ Instagram</p>
-                    <p class="lead amharic">71.4ሺ ቲክቶክ | 10ሺ+ ኢንስታ</p>
+                    <h1>kokirr4</h1>
+                    <p class="lead english">71.4K TikTok | Human Hair Queen</p>
+                    <p class="lead amharic">71.4ሺ ቲክቶክ | የሰው ፀጉር ንግሥት</p>
                     <div class="social-icons">
-                        <a href="https://www.tiktok.com/@kokirr4" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.instagram.com/kokirr4" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@kokirr4"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/kokirr4"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
-            <!-- PHOTO 2 -->
-            <div class="carousel-item" style="background-image: url('https://raw.githubusercontent.com/JamAlexjam/kokirr4.github.io/f7c000fa6dd4666fa6bd88fc46592e2e9c1963df/photo2.jpg');">
-                <div class="hero-content">
-                    <h1 class="english">kokirr4</h1>
-                    <h1 class="amharic">ኮኪርር4</h1>
-                    <p class="lead english">Human Hair Queen</p>
-                    <p class="lead amharic">የሰው ፀጉር ንግሥት</p>
-                    <div class="social-icons">
-                        <a href="https://www.tiktok.com/@kokirr4" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.instagram.com/kokirr4" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
+            <div class="carousel-item" style="background-image:url('https://raw.githubusercontent.com/JamAlexjam/kokirr4.github.io/f7c000fa6dd4666fa6bd88fc46592e2e9c1963df/photo2.jpg')">
+                <div class="hero-content"><h1>kokirr4</h1><p class="lead">Premium Quality Hair</p><div class="social-icons"><a href="https://www.tiktok.com/@kokirr4"><i class="fab fa-tiktok"></i></a><a href="https://www.instagram.com/kokirr4"><i class="fab fa-instagram"></i></a></div></div>
             </div>
-            <!-- PHOTO 3 -->
-            <div class="carousel-item" style="background-image: url('https://raw.githubusercontent.com/JamAlexjam/kokirr4.github.io/f7c000fa6dd4666fa6bd88fc46592e2e9c1963df/photo3.jpg');">
-                <div class="hero-content">
-                    <h1 class="english">kokirr4</h1>
-                    <h1 class="amharic">ኮኪርር4</h1>
-                    <p class="lead english">Call: 0965809644</p>
-                    <p class="lead amharic">ደውል: 0965809644</p>
-                    <div class="social-icons">
-                        <a href="https://www.tiktok.com/@kokirr4" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.instagram.com/kokirr4" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
+            <div class="carousel-item" style="background-image:url('https://raw.githubusercontent.com/JamAlexjam/kokirr4.github.io/f7c000fa6dd4666fa6bd88fc46592e2e9c1963df/photo3.jpg')">
+                <div class="hero-content"><h1>kokirr4</h1><p class="lead">Call 0965809644</p><div class="social-icons"><a href="https://www.tiktok.com/@kokirr4"><i class="fab fa-tiktok"></i></a><a href="https://www.instagram.com/kokirr4"><i class="fab fa-instagram"></i></a></div></div>
             </div>
         </div>
-        <!-- Controls -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
     </div>
 
-    <!-- Stats -->
-    <section class="py-5 text-center bg-white">
+    <!-- STATS - NEON GLOW -->
+    <section class="stats-section">
         <div class="container">
-            <div class="row">
-                <div class="col"><span class="stat"><span class="stat-num" data-target="71400">0</span>+</span><br><span class="english">TikTok</span><span class="amharic">ቲክቶክ</span></div>
-                <div class="col"><span class="stat"><span class="stat-num" data-target="10000">0</span>+</span><br><span class="english">Instagram</span><span class="amharic">ኢንስታ</span></div>
-                <div class="col"><span class="stat"><span class="stat-num" data-target="1000000">0</span>+</span><br><span class="english">Total Likes</span><span class="amharic">ጠቅላላ ላይክ</span></div>
-            </div>
-            <p class="mt-4">
-                <a href="tel:0965809644" class="phone-btn"><i class="fab fa-whatsapp"></i> 0965809644</a>
-            </p>
-        </div>
-    </section>
-
-    <!-- Instagram Feed -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5"><span class="english">Latest on Instagram</span><span class="amharic">በኢንስታ ላይ የቅርብ ጊዜ</span></h2>
-            <div class="row justify-content-center">
-                <div class="col-md-4"><div class="instagram-embed"><iframe src="https://www.instagram.com/p/DAbCdEfGhIj/embed" width="100%" height="480" frameborder="0"></iframe></div></div>
-                <div class="col-md-4"><div class="instagram-embed"><iframe src="https://www.instagram.com/p/C_xyzAbcDef/embed" width="100%" height="480" frameborder="0"></iframe></div></div>
-                <div class="col-md-4"><div class="instagram-embed"><iframe src="https://www.instagram.com/p/C8ijklMnOpQ/embed" width="100%" height="480" frameborder="0"></iframe></div></div>
+            <div class="row g-5">
+                <div class="col-md-4"><div class="stat-card"><div class="stat-num" data-target="71400">0</div><div class="stat-label">TikTok Followers</div></div></div>
+                <div class="col-md-4"><div class="stat-card"><div class="stat-num" data-target="10000">0</div><div class="stat-label">Instagram Family</div></div></div>
+                <div class="col-md-4"><div class="stat-card"><div class="stat-num" data-target="1000000">0</div><div class="stat-label">Total Love</div></div></div>
             </div>
         </div>
     </section>
 
-    <!-- TikTok Videos -->
-    <section class="py-5">
+    <!-- INSTAGRAM & TIKTOK GRID -->
+    <section class="py-5 bg-dark text-white">
         <div class="container">
-            <h2 class="text-center mb-4"><span class="english">Viral TikToks</span><span class="amharic">ቫይረስ ቲክቶኮች</span></h2>
-            <div class="row justify-content-center">
-                <div class="col-md-4"><blockquote class="tiktok-embed" cite="https://www.tiktok.com/@kokirr4/video/7423456789012345678" data-video-id="7423456789012345678"><section><a target="_blank" href="https://www.tiktok.com/@kokirr4">@kokirr4</a></section></blockquote></div>
-                <div class="col-md-4"><blockquote class="tiktok-embed" cite="https://www.tiktok.com/@kokirr4/video/7419876543210987654" data-video-id="7419876543210987654"><section><a target="_blank" href="https://www.tiktok.com/@kokirr4">@kokirr4</a></section></blockquote></div>
-                <div class="col-md-4"><blockquote class="tiktok-embed" cite="https://www.tiktok.com/@kokirr4/video/7401122334455667788" data-video-id="7401122334455667788"><section><a target="_blank" href="https://www.tiktok.com/@kokirr4">@kokirr4</a></section></blockquote></div>
+            <h2 class="text-center mb-5 section-title">Latest Content</h2>
+            <div class="media-grid">
+                <!-- Replace with real embeds when ready -->
+                <div class="media-card"><div class="live-badge">LIVE</div><blockquote class="tiktok-embed" cite="https://www.tiktok.com/@kokirr4/video/7423456789012345678"><section><a href="https://www.tiktok.com/@kokirr4">@kokirr4</a></section></blockquote><i class="fab fa-tiktok platform-icon"></i></div>
+                <div class="media-card"><div class="live-badge">LIVE</div><div style="width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;color:#666;font-size:1.2rem;">More coming soon!<br><a href="https://instagram.com/kokirr4" style="color:#ff6b6b">Follow on IG</a></div><i class="fab fa-instagram platform-icon"></i></div>
+                <div class="media-card"><div class="live-badge">LIVE</div><blockquote class="tiktok-embed" cite="https://www.tiktok.com/@kokirr4/video/7419876543210987654"><section><a href="https://www.tiktok.com/@kokirr4">@kokirr4</a></section></blockquote><i class="fab fa-tiktok platform-icon"></i></div>
+                <div class="media-card"><div class="live-badge">LIVE</div><div style="width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;color:#666;font-size:1.2rem;">New post loading...<br><a href="https://instagram.com/kokirr4" style="color:#ff6b6b">Check Instagram</a></div><i class="fab fa-instagram platform-icon"></i></div>
+                <div class="media-card"><div class="live-badge">LIVE</div><blockquote class="tiktok-embed" cite="https://www.tiktok.com/@kokirr4/video/7401122334455667788"><section><a href="https://www.tiktok.com/@kokirr4">@kokirr4</a></section></blockquote><i class="fab fa-tiktok platform-icon"></i></div>
+                <div class="media-card"><div class="live-badge">LIVE</div><div style="width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;color:#666;font-size:1.2rem;">Hair tutorial coming!<br><a href="https://tiktok.com/@kokirr4" style="color:#ff6b6b">Follow on TikTok</a></div><i class="fab fa-tiktok platform-icon"></i></div>
             </div>
             <script async src="https://www.tiktok.com/embed.js"></script>
         </div>
     </section>
 
-    <!-- Contact -->
-    <section class="py-5 bg-light">
+    <!-- CONTACT - FLOATING GLASS -->
+    <section class="contact-section">
         <div class="container">
-            <h2 class="text-center mb-4"><span class="english">Work With Me</span><span class="amharic">ከእኔ ጋር ሥራ</span></h2>
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="contact-form">
-                        <form>
-                            <input type="text" class="form-control mb-3" placeholder="Name / ስም">
-                            <input type="email" class="form-control mb-3" placeholder="Email / ኢሜይል">
-                            <textarea class="form-control mb-3" rows="4" placeholder="Message / መልእክት"></textarea>
-                            <button type="submit" class="btn btn-success w-100">Send</button>
-                        </form>
-                    </div>
-                </div>
+            <h2 class="text-center mb-5 text-white" style="font-size:3rem; font-weight:900;">Work With Me</h2>
+            <div class="contact-card">
+                <form>
+                    <input type="text" class="form-control mb-4" placeholder="Your Name / ስም">
+                    <input type="email" class="form-control mb-4" placeholder="Email / ኢሜይል">
+                    <textarea class="form-control mb-4" rows="5" placeholder="Your Message / መልእክት"></textarea>
+                    <button type="submit" class="btn btn-lg w-100">Send Message →</button>
+                </form>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>© 2025 kokirr4 | <a href="https://www.tiktok.com/@kokirr4" class="text-white">@kokirr4</a> | <a href="https://www.instagram.com/kokirr4" class="text-white">@kokirr4</a></p>
+    <footer class="bg-black text-white py-5 text-center">
+        <p>© 2025 kokirr4 | Beauty & Hair Expert | Call 0965809644</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -168,8 +163,19 @@
         function toggleLang() { document.body.classList.toggle('lang-en'); document.body.classList.toggle('lang-am'); }
         window.onscroll = () => { document.querySelector('.scroll-top').style.display = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) ? 'flex' : 'none'; };
         function scrollToTop() { window.scrollTo({top: 0, behavior: 'smooth'}); }
+
+        // COUNTERS
         const counters = document.querySelectorAll('.stat-num');
-        counters.forEach(c => { const t = +c.getAttribute('data-target'); const inc = t/100; let cur = 0; const timer = setInterval(() => { cur += inc; c.textContent = Math.ceil(cur).toLocaleString(); if (cur >= t) { c.textContent = t.toLocaleString(); clearInterval(timer); } }, 20); });
+        counters.forEach(c => {
+            const t = +c.getAttribute('data-target');
+            const inc = t/80;
+            let cur = 0;
+            const timer = setInterval(() => {
+                cur += inc;
+                c.textContent = Math.ceil(cur).toLocaleString();
+                if (cur >= t) { c.textContent = t.toLocaleString(); clearInterval(timer); }
+            }, 20);
+        });
     </script>
 </body>
-                                                                       </html>
+</html>
